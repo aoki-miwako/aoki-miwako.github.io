@@ -1,85 +1,44 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<style>
-*{font-family: "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", "sans-serif";}
-
-.container {
-  display: grid;
-  grid-template:
-    "header header" 80px
-    "nav nav" auto
-    "main main" auto
-    "footer footer" 50px /
-    300px 1fr;
-    margin: 10px 100px 0px
-}
-
-.header {
-  grid-area: header;
-  border: solid 1px #000000;
-  margin:6px; border-radius:4px 4px 0px 0px;
-  background-color:#ffffff;
-}
- 
-.nav {
-  grid-area: nav;
-  border: solid 1px #000000;
-  margin:6px;
-  background-color:#ffffff;
-}
- 
-.main {
-  grid-area: main;
-}
-
- 
-.footer {
-  grid-area: footer;
-  border: solid 1px #000000;
-  margin:6px; border-radius:0px 0px 4px 4px;
-  background-color:#ffffff;
-}
-
-article {
-  border: solid 1px #000000;
-  margin:6px; 
-  background-color:#ffffff;
-}
-
-.list {
-    border: solid 1px #000000;
-    display: grid;
-    grid-template-columns: 33% 33% 1fr;
-    grid-column-gap: 20px;
-    grid-row-gap: 20px;
-    justify-items: stretch;
-    align-items: stretch;
-    margin:6px; 
-    padding:6px;
- }
-
-#localDataList {
-  background: #fcfcfc;/*背景色*/
-  padding: 0.5em 0.5em 0.5em 2em;/*ボックス内の余白*/
-  border: solid 3px gray;/*線の種類 太さ 色*/
-}
-
-</style>
+<link href="call.css" rel="stylesheet">
 <body class="container">
 	<header class="header">
-        <h1 style="text-align:center;">青木電話相談</h1>
+        <p style="text-align:center;">　</p>
+        <h1 style="text-align:center;">青木カウンセリング・サービス</h1>
+        <p style="text-align:center;"><strong>～カウンセリング・愚痴聞き・話し相手～</strong></p>
     </header>
-    <nav class="nav">
-    <img src="nav-2.gif" /><img src="nav-1.gif" /><img src="nav-3.gif" />
-    </nav>
+    <a class="nav1" href="./index.html">トップ</a><a class="nav2" href="https://www.facebook.com/profile.php?id=100004416005069">Facebook（ブログ）</a><a class="nav3" href="ryokin.html">料金・お支払い方法</a>
 	<main class="main">
         <article>
-                <h2>スタッフ紹介</h2>
-                <p>4月25日（日）待機時間表 <!--名前をクリックで詳しい自己紹介に飛びます。--></p>
+                <h2>青木電話カウンセリング・サービスが目指すところ</h2>
+                <div>
+                   <p>あなた様のお話を聴かせて頂きます。</p>
+                   <p>話すということは放すこと。</p>
+                   <p>言葉にすることで、重荷を手放し心が軽くなり、より良い人生を生きられるお手伝いができるようつとめます。</p>
+                   <p>誰かに言えるようになるということは、あなたが癒える第一歩だと考えています。</p>
+
+                   <p>あなた様の大切なものを大切にし、より良い一歩のための時間になりますよう願っています。</p>
+
+                   <p>✰⋆｡･*:ﾟ･⋆｡✰⋆｡:ﾟ･*ﾟ･⋆｡✰⋆｡･*:ﾟ･⋆｡✰⋆｡:ﾟ･*ﾟ･⋆｡✰⋆｡･*:ﾟ･⋆｡✰⋆｡:ﾟ･*ﾟ･⋆｡✰⋆｡･*:ﾟ･⋆｡✰⋆｡:ﾟ･*ﾟ･⋆｡✰</p>
+
+                   <p>わたしたちは産まれたとき、みんな「オギャー」と泣きました。</p>
+
+                   <p>人は何度でも生まれ変わることができます。</p>
+
+                   <p>今、心が泣いている方は、すでに新しく産まれたのです。</p>
+                   <p>新しい歩みを一緒に考えてまいります。</p>
+
+                   <p>あなた様の人生がより良いものになりますよう願っています。</p>
+                </div>
+        </article>
+        <article>
+                <h2>自己紹介</h2>
+                <!--<p>（名前をクリックで詳しい自己紹介に飛びます。）</p>-->
                 <div>
                     <div class="list">
                         <div class="name">
                             <h3>青木　美和子</h3>
+                            <img src="tegami_bird.png">
                         </div>
                         <div class="info">
                             <p><strong>📞080-6811-0611</strong></p>
@@ -99,7 +58,7 @@ article {
                 NPO法人日本次世代育成支援協会カウンセラー<br></p>
             </article>
     </main>
-	<footer class="footer" align="right">プライバシーポリシー／特定商取引法に基づく表記</footer>
+	<footer class="footer"><a href="policy.html">プライバシーポリシー</a>／<a href="tokutei.html">特定商取引法に基づく表記</a></footer>
 <script>
 const today = new Date();
 const yyyy = today?.getFullYear();
