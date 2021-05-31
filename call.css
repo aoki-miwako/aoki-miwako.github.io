@@ -12,7 +12,7 @@
     30% 30% 30%;
     margin: auto 10% auto 10%;
 }
-}
+
 
 
 .header {
@@ -112,4 +112,6 @@ font-weight:bold;
   background: #fcfcfc;/*背景色*/
   padding: 0.5em 0.5em 0.5em 2em;/*ボックス内の余白*/
   border: solid 3px gray;/*線の種類 太さ 色*/
+}
+
 }
