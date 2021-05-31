@@ -1,6 +1,8 @@
 *{font-family: "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", "sans-serif";}
 
-.container {
+@media screen and (min-width: 960px) {
+	/* 960px以上に適用されるCSS（PC用） */
+  .container {
   display: grid;
   grid-template:
     "header header header" 500px
@@ -10,6 +12,8 @@
     30% 30% 30%;
     margin: auto 10% auto 10%;
 }
+}
+
 
 .header {
   grid-area: header;
