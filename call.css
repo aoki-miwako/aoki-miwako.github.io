@@ -1,0 +1,111 @@
+*{font-family: "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", "sans-serif";}
+
+.container {
+  display: grid;
+  grid-template:
+    "header header header" 500px
+    "nav1 nav2 nav3" 80px
+    "main main main" auto
+    "footer footer footer" 50px /
+    30% 30% 30%;
+    margin: auto 10% auto 10%;
+}
+
+.header {
+  grid-area: header;
+  border: solid 1px #000000;
+  margin:6px;
+  border-radius:4px 4px 0px 0px;
+  background-color:#ffffff;
+  background-image: url(dreamstime_xxl_115287849.jpg);    /* 背景画像指定 */
+  background-size:  cover;                /* 画像のサイズ指定 */
+  color:#ffffff;
+  font-size:35px;
+}
+ 
+.nav {
+  grid-area: nav;
+  border: solid 1px #000000;
+  margin:6px;
+  background-color:#ffffff;
+}
+ 
+.main {
+  grid-area: main;
+}
+
+ 
+.footer {
+  grid-area: footer;
+  border: solid 1px #000000;
+  margin:6px; border-radius:0px 0px 4px 4px;
+  background-color:#ffffff;
+  text-align:right;
+}
+
+article {
+  border: solid 1px #000000;
+  margin:6px; 
+  background-color:#ffffff;
+  padding:0px  26px 0px 26px;
+}
+
+.list {
+    border: solid 1px #000000;
+    display: grid;
+    grid-template-columns: 33% 50% 1fr;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    justify-items: stretch;
+    align-items: stretch;
+    margin:6px; 
+    padding:6px;
+ }
+
+.nav1{
+  grid-area: nav1;
+  display: grid;
+  border: solid 1px #000000;
+  justify-items: center;
+  align-items: center;
+  vertical-align: middle;
+  margin:6px;
+  font-size:30px;
+text-decoration:none;
+
+font-weight:bold;
+}
+
+.nav2{
+  grid-area: nav2;
+  display: grid;
+  border: solid 1px #000000;
+  justify-items: center;
+  align-items: center;
+  vertical-align: middle;
+  margin:6px;
+  font-size:30px;
+text-decoration:none;
+
+font-weight:bold;
+}
+
+.nav3{
+  grid-area: nav3;
+  display: grid;
+  border: solid 1px #000000;
+  justify-items: center;
+  align-items: center;
+  vertical-align: middle;
+  margin:6px;
+  font-size:30px;
+text-decoration:none;
+
+font-weight:bold;
+}
+
+#localDataList {
+  background: #fcfcfc;/*背景色*/
+  padding: 0.5em 0.5em 0.5em 2em;/*ボックス内の余白*/
+  border: solid 3px gray;/*線の種類 太さ 色*/
+}
