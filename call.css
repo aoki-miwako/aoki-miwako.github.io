@@ -1,5 +1,18 @@
 *{font-family: "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", "sans-serif";}
 
+
+.nav1{
+  display: block;
+}
+
+.nav2{
+  display: block;
+}
+
+.nav3{
+  display: block;
+}
+
 @media screen and (min-width: 960px) {
 	/* 960px以上に適用されるCSS（PC用） */
   .container {
@@ -113,5 +126,6 @@ font-weight:bold;
   padding: 0.5em 0.5em 0.5em 2em;/*ボックス内の余白*/
   border: solid 3px gray;/*線の種類 太さ 色*/
 }
+
 
 }
