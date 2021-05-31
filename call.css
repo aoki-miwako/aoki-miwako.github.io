@@ -3,14 +3,20 @@
 
 .nav1{
   display: block;
+
+  border: solid 1px #000000;
 }
 
 .nav2{
   display: block;
+
+  border: solid 1px #000000;
 }
 
 .nav3{
   display: block;
+
+  border: solid 1px #000000;
 }
 
 @media screen and (min-width: 960px) {
