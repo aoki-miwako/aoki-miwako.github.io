@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+*{font-family: "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", "sans-serif";}
+
+.container {
+  display: grid;
+  grid-template:
+    "header header" 80px
+    "nav nav" auto
+    "main main" auto
+    "footer footer" 50px /
+    300px 1fr;
+    margin: 10px 100px 0px
+}
+
+.header {
+  grid-area: header;
+  border: solid 1px #000000;
+  margin:6px; border-radius:4px 4px 0px 0px;
+  background-color:#ffffff;
+}
+ 
+.nav {
+  grid-area: nav;
+  border: solid 1px #000000;
+  margin:6px;
+  background-color:#ffffff;
+}
+ 
+.main {
+  grid-area: main;
+}
+
+ 
+.footer {
+  grid-area: footer;
+  border: solid 1px #000000;
+  margin:6px; border-radius:0px 0px 4px 4px;
+  background-color:#ffffff;
+}
+
+article {
+  border: solid 1px #000000;
+  margin:6px; 
+  background-color:#ffffff;
+}
+
+.list {
+    border: solid 1px #000000;
+    display: grid;
+    grid-template-columns: 33% 33% 1fr;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    justify-items: stretch;
+    align-items: stretch;
+    margin:6px; 
+    padding:6px;
+ }
+
+#localDataList {
+  background: #fcfcfc;/*背景色*/
+  padding: 0.5em 0.5em 0.5em 2em;/*ボックス内の余白*/
+  border: solid 3px gray;/*線の種類 太さ 色*/
+}
+
+</style>
+<body class="container">
+	<header class="header">
+        <h1 style="text-align:center;">青木電話相談</h1>
+    </header>
+    <nav class="nav">
+    <img src="nav-2.gif" /><img src="nav-1.gif" /><img src="nav-3.gif" />
+    </nav>
+	<main class="main">
+        <article>
+                <h2>スタッフ紹介</h2>
+                <p>4月25日（日）待機時間表 <!--名前をクリックで詳しい自己紹介に飛びます。--></p>
+                <div>
+                    <div class="list">
+                        <div class="name">
+                            <h3>青木　美和子</h3>
+                        </div>
+                        <div class="info">
+                            <p><strong>📞080-6811-0611</strong></p>
+                            <div id="localDataList"></div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article><h2>青木 美和子</h2>
+            <p>
+                はじめまして。<br>
+                心理カウンセラーの青木美和子です。<br>
+                家族が機能していない家庭で育ち、人の気持ちや空気を瞬時に感じ取りながら、周囲に合わせて生きてきました。15年前から心理学を学びはじめ、今では等身大の自分を生きられるようになっています。<br>
+                <br>
+                資格<br>
+                産業カウンセラー<br>
+                NPO法人日本次世代育成支援協会カウンセラー<br></p>
+            </article>
+    </main>
+	<footer class="footer" align="right">プライバシーポリシー／特定商取引法に基づく表記</footer>
+<script>
+const today = new Date();
+const yyyy = today?.getFullYear();
+const mm = ("0"+(today?.getMonth()+1))?.slice(-2);
+const dd = ("0"+today.getDate())?.slice(-2);
+const today_yyyymmdd = yyyy+'-'+mm+'-'+dd;
+
+let elmLocalDataList;
+
+window.addEventListener('DOMContentLoaded', (event) => {
+    elmLocalDataList = document.querySelector('#localDataList');
+    showLocalData({date : today_yyyymmdd});
+});
+
+const showLocalData = (query) => {
+    fetch(`https://script.google.com/macros/s/AKfycbxGkh0xWplzN0LCnJzcNYmWOB6J9JTfuUSjOR5piXy5ITWwgmJjPGsJi-UESnbmnSfWYA/exec?${new URLSearchParams(query)}`,{
+    mode: 'cors'
+    })
+    .then( response => response.json() )
+    .then( responseData => createLocalData(responseData) )
+    .catch( e => console.log(e) );
+}
+
+const createLocalData = ( responseData ) => {
+    let i;
+    clearLocal();
+    Object.keys(responseData).forEach((i) => {
+        let li0;
+        let li1;
+        let li2;
+        let li3;
+        if(responseData[i]?.date === today_yyyymmdd){
+            if(responseData[i]?.memo!==""){ 
+                li0 = document.createElement("p");
+                li0.appendChild(document.createTextNode(`${responseData[i].memo}`));
+                elmLocalDataList.appendChild(li0);
+                return;
+            }else{
+                li0 = document.createElement("p");
+                li0.appendChild(document.createTextNode(`本日の受付時間：`));
+                elmLocalDataList.appendChild(li0);
+            }
+
+            if(responseData[i]?.time1==="" && responseData[i]?.time2==="" && responseData[i]?.time3===""){
+                li1 = document.createElement("p");
+                li1.appendChild(document.createTextNode(`現在スケジュールを調整しております。`));
+                elmLocalDataList.appendChild(li1);
+            } else {
+                if(responseData[i]?.time1!==""){
+                    li1 = document.createElement("p");
+                    li1.appendChild(document.createTextNode(`${responseData[i].time1}`));
+                    elmLocalDataList.appendChild(li1);
+                }
+                if(responseData[i]?.time2!==""){
+                    li2 = document.createElement("p");
+                    li2.appendChild(document.createTextNode(`${responseData[i].time2}`));
+                    elmLocalDataList.appendChild(li2);
+                }
+                if(responseData[i]?.time3!==""){
+                    li3 = document.createElement("p");
+                    li3.appendChild(document.createTextNode(`${responseData[i].time3}`));
+                    elmLocalDataList.appendChild(li3);
+                }
+            }
+        }
+    });
+}
+
+const clearLocal = () => {
+  elmLocalDataList.innerHTML = '';
+};
+</script>
+</body>
