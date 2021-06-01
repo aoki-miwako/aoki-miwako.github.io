@@ -1,5 +1,6 @@
 *{font-family: "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", "sans-serif";}
 
+@media screen and (max-width: 999px) {
 
 .nav1{
   display: block;
@@ -19,7 +20,9 @@
   border: solid 1px #000000;
 }
 
-@media screen and (min-width: 1960px) {
+}
+
+@media screen and (min-width: 1000px) {
 	/* 960px以上に適用されるCSS（PC用） */
   .container {
   display: grid;
