@@ -25,7 +25,7 @@
   display: grid;
   grid-template:
     "header header header" 500px
-    "nav1 nav2 nav3" 80px
+    "nav1 nav2 nav3" 120px
     "main main main" auto
     "footer footer footer" 50px /
     30% 30% 30%;
