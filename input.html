@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>勤務予定入力画面</title>
+  <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<style>
+body {
+  padding: 20px;
+  background-color: #e0ffd6;
+}
+
+.reference h3 {
+  font-size: 20px;
+}
+
+dl dt {
+  margin-top: 10px;
+}
+
+dl dd {
+  margin-left: 20px;
+}
+
+.panel-heading {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.panel label {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.form-control {
+  display: inline-block;
+  width: 200px;
+}
+
+footer {
+  text-align: right;
+}
+footer a {
+  color: #0246AC;
+}
+</style>
+<script>
+let elmValLocal0,
+    elmValLocal1,
+    elmValLocal2,
+    elmValLocal3,
+    elmValLocal4;
+
+const today = new Date();
+const yyyy = today?.getFullYear();
+const mm = ("0"+(today?.getMonth()+1))?.slice(-2);
+const dd = ("0"+today.getDate())?.slice(-2);
+
+window.addEventListener('DOMContentLoaded', (event) => {
+    elmValLocal0 = document.querySelector('#valLocal0');
+    elmValLocal1 = document.querySelector('#valLocal1');
+    elmValLocal2 = document.querySelector('#valLocal2');
+    elmValLocal3 = document.querySelector('#valLocal3');
+    elmValLocal4 = document.querySelector('#valLocal4');
+    elmLocalDataList = document.querySelector('#localDataList');
+    elmValLocal0.value=yyyy+'-'+mm+'-'+dd;
+    showLocalData({ month: yyyy+'-'+mm+'-'+dd });
+  
+    document.querySelector('#btnSaveLocal').addEventListener('click', () => {
+        showLocalData({date  : elmValLocal0.value,
+                       time1 : elmValLocal1.value,
+                       time2 : elmValLocal2.value,
+                       time3 : elmValLocal3.value,
+                       memo  : elmValLocal4.value});
+    });
+
+    elmValLocal0.addEventListener('change', () => {
+        showLocalData({month : elmValLocal0.value});
+    });
+
+});
+const showLocalData = (query) => {
+    fetch(`https://script.google.com/macros/s/AKfycbw3j-8AMx4GD5cntcasyNAOSNGAH59TQxi9JKwdku7HvpCzwophvNIaPCIEpSCqQlC2uw/exec?${new URLSearchParams(query)}`,{
+    mode: 'cors'
+    })
+    .then( response => response.json() )
+    .then( responseData => createLocalData(responseData) )
+    .catch( e => console.log(e) );
+}
+
+const createLocalData = ( responseData ) => {
+    let i;
+    clearLocal();
+    
+    elmValLocal4.value=(`${responseData[0].memo}`);
+
+    Object.keys(responseData).forEach((i) => {
+        let li = document.createElement("tr");
+        li.appendChild(document.createTextNode(`${responseData[i].date}／ ${responseData[i].time1}／ ${responseData[i].time2}／ ${responseData[i].time3}`));
+        elmLocalDataList.appendChild(li);
+    });
+}
+const clearLocal = () => {
+  elmLocalDataList.innerHTML = '';
+};
+</script>
+
+<body>
+
+  <header>
+    <h1>出勤時間入力</h1>
+  </header>
+
+  <hr>
+
+  <h2>青木　美和子</h2>
+
+  <div>
+
+    <div class="card text-dark bg-light">
+      <div class="card-header" id="view_today"></div>
+      <div class="card-body">
+        <script>
+         document.getElementById("view_today").innerHTML = (
+         function () {
+	         var now = new Date();
+	         var year = now?.getFullYear();
+	         var mon = now?.getMonth()+1; //１を足すこと
+	         var day = now?.getDate();
+	         var you = now?.getDay(); //曜日(0～6=日～土)
+
+	         //曜日の選択肢
+	         var youbi = new Array("日","月","火","水","木","金","土");
+	         //出力用
+	         var s = "本日" + year + "年" + mon + "月" + day + "日 (" + youbi[you] + ")";
+	         return s;
+         }())
+         </script>
+        <label for="keyLocal0" class="col-form-label">出勤日：</label>
+        <input type="date" class="form-control" id="valLocal0" />
+        <br>
+        <label for="keyLocal1" class="col-form-label">出勤可能時間（１）：</label>
+        <input type="text" class="form-control" id="valLocal1" />
+        <br>
+        <label for="keyLocal2" class="col-form-label">出勤可能時間（２）：</label>
+        <input type="text" class="form-control" id="valLocal2" />
+        <br>
+        <label for="keyLocal3" class="col-form-label">出勤可能時間（３）：</label>
+        <input type="text" class="form-control" id="valLocal3" />
+        <br>
+        <label for="keyLocal4" class="col-form-label">コメント：</label>
+        <input type="text" class="form-control" id="valLocal4" />
+        <br>
+        <button type="button" class="btn btn-success" id="btnSaveLocal">保存する</button>
+        <div>
+          <p style="margin-top:1em;">現在保持しているデータ：</p>
+          <table id="localDataList"></table>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <hr>
+</body>
+</html>
