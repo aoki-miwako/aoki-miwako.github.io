@@ -75,7 +75,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 });
 
 const showLocalData = (query) => {
-    fetch(`https://script.google.com/macros/s/AKfycbw3j-8AMx4GD5cntcasyNAOSNGAH59TQxi9JKwdku7HvpCzwophvNIaPCIEpSCqQlC2uw/exec?${new URLSearchParams(query)}`,{
+    fetch(`https://script.google.com/macros/s/AKfycbweoLPwp9tliH_16Tb5DTtmn6b038lkz1J8c44KBmjRkqCQ9tsbLtRh2iEa6FCcfHevkA/exec?${new URLSearchParams(query)}`,{
     mode: 'cors'
     })
     .then( response => response.json() )
